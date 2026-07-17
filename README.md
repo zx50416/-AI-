@@ -4,7 +4,7 @@
 
 ## 線上網站（可分享）
 
-**https://zx50416.github.io/-AI-/**
+**https://zx50416.github.io/KCIS_AI_website/**
 
 （由 GitHub Pages 自動部署；推送 `main` 後約 1–3 分鐘更新）
 
@@ -24,5 +24,5 @@ npm run dev
 
 ## 部署備註
 
-- 公開站：GitHub Actions → GitHub Pages（`web/` 靜態匯出，`GITHUB_PAGES=true` 時使用 `basePath: /-AI-`）
+- 公開站：GitHub Actions → GitHub Pages（`web/` 靜態匯出，`GITHUB_PAGES=true` 時使用 `basePath: /KCIS_AI_website`）
 - 若改接 Vercel：Root Directory 設 `web`，且**不要**設 `GITHUB_PAGES=true`（即可無 basePath）

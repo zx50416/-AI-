@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
-/** GitHub Pages serves this repo at https://zx50416.github.io/-AI-/ */
+/** GitHub Pages: https://zx50416.github.io/KCIS_AI_website/ */
 const isGithubPages = process.env.GITHUB_PAGES === "true";
-const basePath = isGithubPages ? "/-AI-" : "";
+const basePath = isGithubPages ? "/KCIS_AI_website" : "";
 
 const nextConfig: NextConfig = {
   output: "export",
