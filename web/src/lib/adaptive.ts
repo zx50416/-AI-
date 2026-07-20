@@ -1,5 +1,17 @@
 import type { Complexity, Department, Level, Role } from "./types";
 
+/** Keep first occurrence only — avoids duplicate React keys when lists are merged. */
+function uniqueInOrder<T>(items: T[]): T[] {
+  const seen = new Set<T>();
+  const out: T[] = [];
+  for (const item of items) {
+    if (seen.has(item)) continue;
+    seen.add(item);
+    out.push(item);
+  }
+  return out;
+}
+
 /**
  * Simple wording ONLY for 學生 + 國小.
  */
@@ -134,7 +146,7 @@ export function tasksForAdmin(department: Department | null): string[] {
     other_office: common,
   };
 
-  return department ? byDept[department] : common;
+  return department ? uniqueInOrder(byDept[department]) : uniqueInOrder(common);
 }
 
 export function tasksForProfile(
@@ -160,7 +172,7 @@ export function tasksForProfile(
 
   if (role === "student") {
     if (complexity === "simple") {
-      return [
+      return uniqueInOrder([
         "interest_explore",
         "music",
         "image",
@@ -171,23 +183,21 @@ export function tasksForProfile(
         "language_practice",
         "homework_help",
         "other",
-      ];
+      ]);
     }
-    return [
+    return uniqueInOrder([
       ...creativeCore,
-      "coding",
-      "web_project",
       "portfolio",
       "collaboration",
       "writing",
       "study_notes",
       "research",
       "other",
-    ];
+    ]);
   }
 
   // teacher
-  return [
+  return uniqueInOrder([
     "music",
     "sound",
     "video",
@@ -206,7 +216,7 @@ export function tasksForProfile(
     "research",
     "admin_draft",
     "other",
-  ];
+  ]);
 }
 
 export function normalizeTaskForScoring(task: string | null): string | null {
